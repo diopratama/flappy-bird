@@ -76,14 +76,14 @@ body {
 }
 
 /* Prevent double-tap zoom */
-body, #gameContainer {
+body, #game-container {
     touch-action: manipulation;
 }
 
 /* ============================================
    GAME CONTAINER
    ============================================ */
-#gameContainer {
+#game-container {
     position: relative;
     width: var(--canvas-width);
     height: var(--canvas-height);
@@ -352,7 +352,7 @@ body, #gameContainer {
         --canvas-max-height: 800px;
     }
     
-    #gameContainer {
+    #game-container {
         border-radius: 16px;
         border: 4px solid rgba(255, 255, 255, 0.2);
     }
@@ -384,7 +384,7 @@ body, #gameContainer {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
     }
     
-    #gameContainer {
+    #game-container {
         border-radius: 20px;
         border: 6px solid rgba(255, 255, 255, 0.3);
         box-shadow: 
@@ -444,7 +444,7 @@ body, #gameContainer {
         --canvas-max-width: auto;
     }
     
-    #gameContainer {
+    #game-container {
         width: auto;
         height: var(--canvas-max-height);
     }
