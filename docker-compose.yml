@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  flappy-bird:
+    image: nginx:alpine
+    container_name: flappy-bird
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    labels:
+      - "com.docker.compose.project=flappy-bird"
