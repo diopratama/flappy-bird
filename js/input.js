@@ -22,6 +22,7 @@ class InputHandler {
         
         // Initialize event listeners
         this.init();
+        this.enable();
     }
 
     /**
