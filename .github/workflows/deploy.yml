@@ -18,6 +18,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT || '22' }}
           script: |
-            cd /opt/portainer/stacks/flappy-bird
-            docker-compose pull
-            docker-compose up -d
+            cd /workspace/projects/myapp
+            docker-compose pull || true
+            docker-compose -f docker-compose.yml up -d
