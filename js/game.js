@@ -15,21 +15,21 @@ class Game {
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
         
-        // Set canvas size
-        this.resizeCanvas();
-        
-        // Game constants
-        this.PIPE_SPEED = 3;
-        this.PIPE_GAP = 120;
-        this.PIPE_SPAWN_INTERVAL = 1500; // ms
-        
-        // Game state
+        // Game state (MUST be defined before resizeCanvas)
         this.STATES = {
             START: 'START',
             PLAYING: 'PLAYING',
             GAME_OVER: 'GAME_OVER'
         };
         this.state = this.STATES.START;
+        
+        // Set canvas size (depends on STATES being defined)
+        this.resizeCanvas();
+        
+        // Game constants
+        this.PIPE_SPEED = 3;
+        this.PIPE_GAP = 120;
+        this.PIPE_SPAWN_INTERVAL = 1500; // ms
         
         // Score
         this.score = 0;
@@ -56,6 +56,14 @@ class Game {
         // Start the game loop
         this.gameLoop = this.gameLoop.bind(this);
         this.start();
+
+        // Hide loading screen after init
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+        }
+        
+        // Hide loading screen
         
         // Handle window resize
         window.addEventListener('resize', () => this.resizeCanvas());
@@ -66,6 +74,10 @@ class Game {
      */
     resizeCanvas() {
         this.canvas.width = window.innerWidth;
+        this.canvas.style.width = window.innerWidth + 'px';
+        this.canvas.style.height = window.innerHeight + 'px';
+        this.canvas.style.width = window.innerWidth + 'px';
+        this.canvas.style.height = window.innerHeight + 'px';
         this.canvas.height = window.innerHeight;
         
         // Update ground height based on canvas size
@@ -195,7 +207,7 @@ class Game {
         if (this.highScore > 0) {
             ctx.fillStyle = '#E74C3C';
             ctx.font = '20px Arial, sans-serif';
-            ctx.fillText(`Best: ${this.highScore}`, centerX, centerY + 100);
+            ctx.fillText('Best: ' + this.highScore, centerX, centerY + 100);
         }
     }
 
@@ -396,12 +408,12 @@ class Game {
         // Score
         ctx.fillStyle = '#FFFFFF';
         ctx.font = 'bold 36px Arial, sans-serif';
-        ctx.fillText(`Score: ${this.score}`, centerX, centerY);
+        ctx.fillText('Score: ' + this.score, centerX, centerY);
         
         // High score
         ctx.fillStyle = '#F7DC6F';
         ctx.font = '24px Arial, sans-serif';
-        ctx.fillText(`Best: ${this.highScore}`, centerX, centerY + 40);
+        ctx.fillText('Best: ' + this.highScore, centerX, centerY + 40);
         
         // New high score indicator
         if (this.score === this.highScore && this.score > 0) {
@@ -522,7 +534,7 @@ class Game {
     }
 }
 
-// Initialize game when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    window.game = new Game('gameCanvas');
-});
+// Export for use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = Game;
+}
