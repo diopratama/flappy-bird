@@ -22,6 +22,7 @@ class Game {
             GAME_OVER: 'GAME_OVER'
         };
         this.state = this.STATES.START;
+        this.showStartScreen();
         
         // Set canvas size (depends on STATES being defined)
         this.resizeCanvas();
@@ -42,6 +43,39 @@ class Game {
         
         // Input handling
         this.inputHandler = new InputHandler(this.canvas, () => this.handleInput());
+
+    /**
+     * Show the start screen overlay
+     */
+    showStartScreen() {
+        if (this.startScreen) this.startScreen.classList.add('active');
+    }
+
+    /**
+     * Hide the start screen overlay
+     */
+    hideStartScreen() {
+        if (this.startScreen) this.startScreen.classList.remove('active');
+    }
+
+    /**
+     * Show the game over screen overlay
+     */
+    showGameOverScreen() {
+        if (this.gameOverScreen) this.gameOverScreen.classList.add('active');
+    }
+
+    /**
+     * Hide the game over screen overlay
+     */
+    hideGameOverScreen() {
+        if (this.gameOverScreen) this.gameOverScreen.classList.remove('active');
+    }
+
+
+        // DOM element references for overlays
+        this.startScreen = document.getElementById('startScreen');
+        this.gameOverScreen = document.getElementById('gameOverScreen');
         
         // Ground position
         this.groundHeight = 80;
@@ -94,6 +128,7 @@ class Game {
      */
     start() {
         this.state = this.STATES.START;
+        this.showStartScreen();
         this.score = 0;
         this.pipes = [];
         this.bird.reset();
@@ -145,6 +180,7 @@ class Game {
     handleInput() {
         switch (this.state) {
             case this.STATES.START:
+                this.hideStartScreen();
                 this.state = this.STATES.PLAYING;
                 this.bird.flap();
                 break;
@@ -345,6 +381,9 @@ class Game {
      */
     gameOver() {
         this.state = this.STATES.GAME_OVER;
+
+        // Show game over overlay
+        this.showGameOverScreen();
         
         // Update high score
         if (this.score > this.highScore) {
