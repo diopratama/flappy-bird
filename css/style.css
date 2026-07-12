@@ -1,0 +1,120 @@
+/* Flappy Bird - Game Styles */
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #70c5ce;
+    font-family: 'Courier New', monospace;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Game Container */
+#game-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Canvas */
+#gameCanvas {
+    display: block;
+    background-color: #70c5ce;
+}
+
+/* Overlay for start/game over screens */
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+/* Instructions text */
+.instruction {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    pointer-events: auto;
+}
+
+/* Score display */
+#score-display {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* Game Over Panel */
+#game-over-panel {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px 50px;
+    border-radius: 15px;
+    text-align: center;
+    display: none;
+}
+
+#game-over-panel h2 {
+    color: #ff6b6b;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#game-over-panel p {
+    color: white;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+#restart-btn {
+    background: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.1s;
+}
+
+#restart-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    #score-display {
+        font-size: 3rem;
+    }
+    
+    .instruction {
+        font-size: 1.2rem;
+    }
+}
