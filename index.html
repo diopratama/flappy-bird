@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#70c5ce">
+    <title>Flappy Bird</title>
+    
+    <!-- Google Font for Retro Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading...</p>
+    </div>
+
+    <!-- Game Container -->
+    <div id="gameContainer">
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Score Display (always visible during gameplay) -->
+        <div id="scoreDisplay">0</div>
+        
+        <!-- Start Screen Overlay -->
+        <div id="startScreen" class="game-overlay active">
+            <div class="start-content">
+                <h1 class="game-title">FLAPPY BIRD</h1>
+                
+                <!-- CSS Bird Preview -->
+                <div class="bird-sprite bird-preview"></div>
+                
+                <p class="tap-instruction">TAP TO START</p>
+            </div>
+        </div>
+        
+        <!-- Game Over Screen Overlay -->
+        <div id="gameOverScreen" class="game-overlay">
+            <div class="gameover-content">
+                <h2 class="gameover-title">Game Over</h2>
+                
+                <!-- Score Panel -->
+                <div class="score-panel">
+                    <div class="medal gold" id="medal"></div>
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="finalScore">0</span>
+                    <div class="best-score">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        <span>BEST: <span id="bestScore">0</span></span>
+                    </div>
+                </div>
+                
+                <button id="restartBtn" class="restart-btn">TAP TO RESTART</button>
+            </div>
+        </div>
+        
+        <!-- Pause Overlay -->
+        <div id="pauseOverlay" class="game-overlay">
+            <div class="pause-icon">
+                <span></span>
+                <span></span>
+            </div>
+            <p class="tap-instruction" style="margin-top: 20px;">PAUSED</p>
+        </div>
+    </div>
+
+    <!-- Game Script -->
+    <script src="js/game.js"></script>
+</body>
+</html>
